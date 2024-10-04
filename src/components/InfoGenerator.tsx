@@ -21,7 +21,7 @@ const generateJapaneseName = async (): Promise<{ kanji: string; katakana: string
   const firstName = faker.person.firstName();
   return {
     kanji: `${lastName} ${firstName}`,
-    katakana:"qqqq",
+    katakana:`${lastName} ${firstName}`,
   };
 };
 
