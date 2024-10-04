@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styles from './InfoGenerator.module.scss';
 
 const InfoGenerator = () => {
@@ -24,6 +24,10 @@ const InfoGenerator = () => {
     }
   };
 
+  useEffect(() => {
+    generateInfo();
+  }, []);
+
   return (
     <div className={styles.main}>
       <h4>個人情報ジェネレーター</h4>
@@ -37,19 +41,19 @@ const InfoGenerator = () => {
       {personInfo && (
         <div>
           <p>
-            <strong>名前（漢字）:</strong> {personInfo.kanji}
+            <strong>名前(漢字): </strong> {personInfo.kanji}
           </p>
           <p>
-            <strong>名前（カタカナ）:</strong> {personInfo.katakana}
+            <strong>名前(カタカナ): </strong> {personInfo.katakana}
           </p>
           <p>
-            <strong>住所:</strong> {personInfo.address}
+            <strong>住所: </strong> {personInfo.address}
           </p>
           <p>
-            <strong>郵便番号:</strong> {personInfo.postalCode}
+            <strong>郵便番号: </strong> {personInfo.postalCode}
           </p>
           <p>
-            <strong>電話番号:</strong> {personInfo.phoneNumber}
+            <strong>電話番号: </strong> {personInfo.phoneNumber}
           </p>
         </div>
       )}

@@ -1,7 +1,5 @@
+import { redirect } from 'next/navigation';
+
 export default function Home() {
-  return (
-    <div>
-      1111111
-    </div>
-  );
+  redirect('/info');
 }

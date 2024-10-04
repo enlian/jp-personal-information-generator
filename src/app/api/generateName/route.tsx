@@ -13,8 +13,18 @@ const faker = new Faker({
   locale: [ja],
 });
 
+function generateRoom() {
+  const floor = Math.floor(Math.random() * 5) + 1; // 随机层数 (1-10)
+  const room = Math.floor(Math.random() * 6) + 1; // 随机房间号 (1-6)
+
+  // 将层数和房间号拼接成三位数格式
+  const roomNumber = `${floor}0${room}`; // 确保格式为三位数
+
+  return roomNumber;
+}
+
 const generateAddress = (): string => {
-  return `東京都 ${faker.location.city()} ${faker.location.streetAddress()}`;
+  return `${faker.location.state()} ${faker.location.city()} ${faker.location.streetAddress()} ${generateRoom()}`;
 };
 
 const generatePostalCode = (): string => {
@@ -22,7 +32,7 @@ const generatePostalCode = (): string => {
 };
 
 const generatePhoneNumber = (): string => {
-  return faker.phone.number("###-####-####");
+  return faker.phone.number({ style: 'national' });
 };
 
 // 生成随机的汉字名字
