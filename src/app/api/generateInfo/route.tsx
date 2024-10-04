@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import kuromoji from 'kuromoji';
 import path from 'path';
 import fs from 'fs';
-import { Faker, faker as defaultFaker, ja } from '@faker-js/faker';
+import { Faker, ja } from '@faker-js/faker';
 
 interface GeneratedName {
   kanji: string;
@@ -14,11 +14,11 @@ const faker = new Faker({
 });
 
 function generateRoom() {
-  const floor = Math.floor(Math.random() * 5) + 1; // 随机层数 (1-10)
+  const floor = Math.floor(Math.random() * 5) + 1;
   const room = Math.floor(Math.random() * 6) + 1; // 随机房间号 (1-6)
 
   // 将层数和房间号拼接成三位数格式
-  const roomNumber = `${floor}0${room}`; // 确保格式为三位数
+  const roomNumber = floor +"0"+ room; // 确保格式为三位数
 
   return roomNumber;
 }
@@ -42,7 +42,7 @@ const generateRandomName = (): { lastName: string; firstName: string } => {
   return { lastName, firstName };
 };
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   const dictPath = path.resolve('node_modules/kuromoji/dict/base.dat.gz');
 
   if (!fs.existsSync(dictPath)) {
@@ -63,7 +63,8 @@ export async function GET() {
 
       const tokens = tokenizer.tokenize(fullName);
       const katakanaName = tokens
-        .map((token: { reading: any; }) => token.reading || '')
+        .filter(token => token.reading) // 只保留有 reading 的 token
+        .map(token => token.reading)
         .join(' ');  // 合并所有的カタカナ表示
 
       const address = generateAddress();

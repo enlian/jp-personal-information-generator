@@ -12,6 +12,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noEmitOnError": false, // 允许在存在错误的情况下生成输出
+    "ignoreDeprecations": "5.0",
     "plugins": [
       {
         "name": "next"

@@ -178,10 +178,22 @@
     "@swc/counter" "^0.1.3"
     tslib "^2.4.0"
 
+"@types/doublearray@*":
+  version "0.0.32"
+  resolved "https://registry.npmjs.org/@types/doublearray/-/doublearray-0.0.32.tgz"
+  integrity sha512-HloTru3I3a55runIVqZX1YBQi2L5A4peNQPh33yshzB4ttt1qHCnHPkuhy9Djy/cTx7i5xJvxItKRPCmvnfpGw==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
+
+"@types/kuromoji@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.npmjs.org/@types/kuromoji/-/kuromoji-0.1.3.tgz"
+  integrity sha512-u+YwX6eJj6Fmm0F5qunsyA+X8HSiyRNNE5ON3itD3tERax4meq9tv+S7bjTMXkPjqbdBGUmH2maGDCuEvpODwg==
+  dependencies:
+    "@types/doublearray" "*"
 
 "@types/node@^20":
   version "20.16.10"

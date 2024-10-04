@@ -1,9 +1,19 @@
-"use client"
-import React, { useState,useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import styles from './InfoGenerator.module.scss';
 
+// 定义接口
+interface GeneratedPersonInfo {
+  kanji: string;
+  katakana: string;
+  address: string;
+  postalCode: string;
+  phoneNumber: string;
+}
+
 const InfoGenerator = () => {
-  const [personInfo, setPersonInfo] = useState<any>(null);
+  // 使用定义的类型
+  const [personInfo, setPersonInfo] = useState<GeneratedPersonInfo | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -11,12 +21,12 @@ const InfoGenerator = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('/api/generateName');
+      const response = await fetch('/api/generateInfo');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setPersonInfo(data);
+      setPersonInfo(data);  // 假设 API 返回的数据结构符合 GeneratedPersonInfo
     } catch (err) {
       setError('Error generating information: ' + err);
     } finally {

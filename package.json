@@ -17,6 +17,7 @@
     "sass": "^1.79.4"
   },
   "devDependencies": {
+    "@types/kuromoji": "^0.1.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
