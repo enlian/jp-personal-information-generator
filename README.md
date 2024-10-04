@@ -1,16 +1,50 @@
 <img src="/static/1.jpg" width="300"/>
 
+## Japanese Personal Information Generator
+
+This tool allows you to generate temporary false personal information for use on websites, helping to protect your privacy. It is strictly for personal use, and please refrain from using it for corporate or profit-making purposes.
+
+### Project Overview
+
+The project runs on **Node.js** and uses **Next.js**. When you click the generate button, the frontend requests data from the backend.
+
+### Installation
+
+To install the project, clone the repository and run the following command in your terminal:
+
+```bash
+npm install
+
+# For debugging
+npm run dev
+
+# For production build
+npm run build
+```
+
+### Project Features
+- Generate Personal Information: By clicking the "Generate Personal Information" button, a Japanese name (in kanji and katakana), address, postal code, and phone number are automatically generated.
+- Fake Information: All generated information is false and unrelated to any real individuals.
+### Notes
+- This tool is intended for the protection of personal privacy.
+- Using it for profit or malicious purposes may violate the law, so please use it responsibly.
+### Disclaimer
+The developer assumes no responsibility for any issues arising from the use of this tool. Use it at your own risk.
+
+***
 
 ### 日本の個人情報ジェネレーター
 
 このツールを使用して、一時的に使用するサイト上で、虚偽の個人情報を生成し、プライバシーを保護することができます。あくまで個人利用に限りますので、企業や営利目的での利用はご遠慮ください。
-<br/>
-このページでは next.js を使用し、生成ボタンをクリックすると、フロントエンドがバックエンド データをリクエストします。
+<br/><br/>
+プロジェクト実行環境は ***Node.js***です、
+***next.js*** を使用し、生成ボタンをクリックすると、フロントエンドがバックエンド データをリクエストします。
 
 ### 実行メソッド
 ```bash
-npm i
-npm run dev
+依存関係をインストールする：npm i
+デバッグ：npm run dev
+本番展開：npm run build
 ```
 
 ### プロジェクトの特徴
