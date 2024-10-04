@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Faker, faker as defaultFaker, ja } from "@faker-js/faker";
 
-
-// 创建 Faker 的日语实例
 const faker = new Faker({
   locale: [ja],
 });
@@ -16,12 +14,18 @@ interface PersonInfo {
   phoneNumber: string;
 }
 
-const generateJapaneseName = async (): Promise<{ kanji: string; katakana: string; }> => {
+const generateJapaneseName = async (): Promise<{
+  kanji: string;
+  katakana: string;
+}> => {
   const lastName = faker.person.lastName();
   const firstName = faker.person.firstName();
+  const fullName = `${lastName} ${firstName}`;
+
+  const katakanaName = "getFromApi"; //请求nextjs后端api来获取
   return {
-    kanji: `${lastName} ${firstName}`,
-    katakana:`${lastName} ${firstName}`,
+    kanji: fullName,
+    katakana: katakanaName,
   };
 };
 
@@ -40,7 +44,7 @@ const generatePhoneNumber = (): string => {
 const InfoGenerator: React.FC = () => {
   const [personInfo, setPersonInfo] = useState<PersonInfo | null>(null);
 
-  const handleGenerate = async() => {
+  const handleGenerate = async () => {
     const { kanji, katakana } = await generateJapaneseName();
     const address = generateAddress();
     const postalCode = generatePostalCode();
