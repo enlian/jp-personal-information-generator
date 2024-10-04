@@ -1,0 +1,42 @@
+#root {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平居中 */
+  min-height: 100vh; /* 让内容占满整个视口高度 */
+  width: 980px;
+}
+h4 {
+  padding: 0;
+  margin: 0;
+}
+hr {
+  border: 0.5px dashed rgba(129, 129, 129, 0.5);
+  width: 80%;
+  margin: 20px 0 20px 0;
+}
+
+button {
+  background-color: #4285f4; /* Google 蓝色 */
+  color: white; /* 字体颜色 */
+  border: none; /* 无边框 */
+  padding: 10px 20px; /* 内边距 */
+  border-radius: 4px; /* 圆角 */
+  font-size: 16px; /* 字体大小 */
+  font-weight: 500; /* 字体加粗 */
+  cursor: pointer; /* 鼠标指针效果 */
+  transition: background-color 0.3s, transform 0.2s; /* 动画效果 */
+  display: flex; /* 使用 flexbox */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
+
+button:hover {
+  background-color: #357ae8; /* 悬停时颜色 */
+  transform: scale(1.05); /* 鼠标悬停时放大效果 */
+}
+
+button:active {
+  background-color: #3367d6; /* 点击时颜色 */
+  transform: scale(0.95); /* 点击时缩小效果 */
+}
