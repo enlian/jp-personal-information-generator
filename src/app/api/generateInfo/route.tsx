@@ -87,24 +87,32 @@ export async function GET(): Promise<NextResponse> {
         const postalCode = generatePostalCode();
         const phoneNumber = generatePhoneNumber();
 
-        const response = NextResponse.json<
-          GeneratedName & {
-            address: string;
-            postalCode: string;
-            phoneNumber: string;
-          }
-        >({
-          kanji: fullName,
-          katakana: katakanaLastName+"・"+katakanaFirstName,
-          address,
-          postalCode,
-          phoneNumber,
-        });
-
-        // 添加 Cache-Control 头部
-        response.headers.set("Cache-Control", "no-store");
-
-        return resolve(response);
+        // 在此处设置缓存控制
+        return resolve(
+          NextResponse.json<
+            GeneratedName & {
+              address: string;
+              postalCode: string;
+              phoneNumber: string;
+            }
+          >(
+            {
+              kanji: fullName,
+              katakana: katakanaLastName + "・" + katakanaFirstName,
+              address,
+              postalCode,
+              phoneNumber,
+            },
+            {
+              headers: {
+                "Cache-Control":
+                  "no-store, no-cache, must-revalidate, proxy-revalidate",
+                Pragma: "no-cache",
+                Expires: "0",
+              },
+            }
+          )
+        );
       });
   });
 }
