@@ -21,7 +21,8 @@ const InfoGenerator = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('/api/generateInfo');
+      const timestamp = new Date().getTime();  // 获取当前时间戳
+      const response = await fetch(`/api/generateInfo?ts=${timestamp}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
