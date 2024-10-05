@@ -9,7 +9,7 @@ const nextConfig = {
           patterns: [
             {
               from: path.resolve('node_modules/kuromoji/dict'),
-              to: path.resolve('public'),
+              to: path.resolve('public/dict'),
             },
           ],
         })
