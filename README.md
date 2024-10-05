@@ -1,4 +1,4 @@
-<img src="/static/1.png" width="600"/>
+<img src="public/1.png" width="600"/>
 
 ## Japanese Personal Information Generator
 
