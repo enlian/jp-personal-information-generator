@@ -35,14 +35,13 @@ const generatePhoneNumber = (): string => {
   return faker.phone.number({ style: "national" });
 };
 
-// 生成随机的汉字名字
 const generateRandomName = (): { lastName: string; firstName: string } => {
   const lastName = faker.person.lastName(); // 随机生成姓
   const firstName = faker.person.firstName(); // 随机生成名
   return { lastName, firstName };
 };
 
-export async function GET(): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
   const dictPath = path.resolve("node_modules/kuromoji/dict/base.dat.gz");
 
   if (!fs.existsSync(dictPath)) {
@@ -53,7 +52,6 @@ export async function GET(): Promise<NextResponse> {
     );
   }
 
-  // 生成随机名字
   const { lastName, firstName } = generateRandomName();
   const fullName = `${lastName}・${firstName}`;
 
@@ -73,29 +71,26 @@ export async function GET(): Promise<NextResponse> {
 
         const katakanaLastName = tokenizer
           .tokenize(lastName)
-          .filter((token) => token.reading) // 只保留有 reading 的 token
+          .filter((token) => token.reading)
           .map((token) => token.reading)
-          .join(""); // 合并所有的カタカナ表示
+          .join("");
 
         const katakanaFirstName = tokenizer
           .tokenize(firstName)
-          .filter((token) => token.reading) // 只保留有 reading 的 token
+          .filter((token) => token.reading)
           .map((token) => token.reading)
-          .join(""); // 合并所有的カタカナ表示
+          .join("");
 
         const address = generateAddress();
         const postalCode = generatePostalCode();
         const phoneNumber = generatePhoneNumber();
 
-        // 在此处设置缓存控制
         return resolve(
-          NextResponse.json<
-            GeneratedName & {
+          NextResponse.json<GeneratedName & {
               address: string;
               postalCode: string;
               phoneNumber: string;
-            }
-          >(
+            }>(
             {
               kanji: fullName,
               katakana: katakanaLastName + "・" + katakanaFirstName,

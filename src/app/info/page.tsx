@@ -21,11 +21,18 @@ const InfoGenerator = () => {
     setLoading(true);
     setError(null);
     try {
-      const timestamp = new Date().getTime();  // 获取当前时间戳
-      const response = await fetch(`/api/generateInfo?ts=${timestamp}`);
+      const response = await fetch('/api/generateInfo', {
+        method: 'POST',  // 改为 POST 请求
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ timestamp: new Date().getTime() })  // 发送时间戳作为请求体的一部分
+      });
+    
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+    
       const data = await response.json();
       setPersonInfo(data);  // 假设 API 返回的数据结构符合 GeneratedPersonInfo
     } catch (err) {
