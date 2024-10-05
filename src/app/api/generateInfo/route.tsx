@@ -43,7 +43,7 @@ const generateRandomName = (): { lastName: string; firstName: string } => {
 
 export async function POST(): Promise<NextResponse> {
   // const dictPath = path.resolve("node_modules/kuromoji/dict/base.dat.gz");
-  const dictPath = path.resolve("public/dict");
+  const dictPath = path.resolve("public/dict/base.dat.gz");
 
   if (!fs.existsSync(dictPath)) {
     console.error("Dictionary file not found:", dictPath);
